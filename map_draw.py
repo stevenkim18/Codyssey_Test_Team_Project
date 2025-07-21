@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 
 def draw_map(data) :
     """지도를 시각화하는 함수"""
@@ -65,7 +64,7 @@ def main():
     """메인 함수"""
     # 데이터 로드
     data = pd.read_csv('dataFile/merged_output.csv')
-    print(data.columns)
+    
     print("=== 지도 시각화 데이터 요약 ===")
     print(f"총 데이터 수: {len(data)}")
     print(f"X 범위: {data['x'].min()} ~ {data['x'].max()}")
