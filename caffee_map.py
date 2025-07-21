@@ -32,6 +32,8 @@ def get_data_from_csv():
     sorted_merged_df = merged_df.sort_values(by=['area', 'x', 'y'], ascending=[True, True, True])
     print(sorted_merged_df)
     
+    sorted_merged_df.to_csv('./dataFile/merged_output.csv', index=False)
+    
     # 4. area가 1인 곳 필터링
     area1_df = sorted_merged_df[sorted_merged_df['area'] == 1]
     print(area1_df)
