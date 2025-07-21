@@ -65,35 +65,6 @@ def main():
     # 데이터 로드
     data = pd.read_csv('dataFile/merged_output.csv')
     
-    print("=== 지도 시각화 데이터 요약 ===")
-    print(f"총 데이터 수: {len(data)}")
-    print(f"X 범위: {data['x'].min()} ~ {data['x'].max()}")
-    print(f"Y 범위: {data['y'].min()} ~ {data['y'].max()}")
-    
-    # 구조물별 통계
-    struct_counts = data['category'].value_counts()
-    print("\n=== 구조물별 통계 ===")
-    for category, count in struct_counts.items():
-        print(f"{category}: {count}개")
-    
-    # 건설 현장 통계
-    construction_counts = data['ConstructionSite'].value_counts()
-    print("\n=== 건설 현장 통계 ===")
-    print(f"건설 현장 없음 (0): {construction_counts.get(0, 0)}개")
-    print(f"건설 현장 있음 (1): {construction_counts.get(1, 0)}개")
-    
-    # 중요 위치 출력
-    my_home = data[data['category'] == 'MyHome']
-    coffee_shops = data[data['category'] == 'BandalgomCoffee']
-    
-    print("\n=== 중요 위치 정보 ===")
-    if not my_home.empty:
-        print(f"내 집 위치: ({my_home.iloc[0]['x']}, {my_home.iloc[0]['y']})")
-    
-    print("반달곰 커피 위치:")
-    for _, coffee in coffee_shops.iterrows():
-        print(f"  - ({coffee['x']}, {coffee['y']})")
-    
     # 지도 그리기
     draw_map(data)
 
